@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+  <ul class="menu">
+    <li><a href="#/view1">view1</a></li>
+    <li><a href="#/view2">view2</a></li>
+  </ul>
+
+  <div ng-view></div>
+
+  <div>Angular seed app: v<span app-version></span></div>
+
+  <div class="container">
+    <div class="header">
+        <ul class="nav nav-pills pull-right">
+            <li class="active">
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+        </ul>
+        <h1 class="text-muted">Game of drones</h1>
+    </div>
+    <div class="jumbotron">
+        <h2>Enter Player's Names</h2>
+        <div class="">
+            <div class="form-group lead">
+                <label class="control-label" for="formInput23">Player 1</label>
+                <input type="text" class="form-control" id="formInput23" placeholder="Name">
+            </div>
+            <div class="form-group lead">
+                <label class="control-label" for="formInput23">Player 2</label>
+                <input type="text" class="form-control" id="formInput23" placeholder="Name">
+            </div>
+        </div>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">Start</a></p>
+    </div>
+    <div class="footer">
+        <p>© Gustavo Gard 2014</p>
+    </div>
+  </div>
+
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+  <script src="view1/view1.js"></script>
+  <script src="view2/view2.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+</body>
+</html>
