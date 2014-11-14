@@ -4,13 +4,12 @@
 	// Declare app level module which depends on views, and components
 	var app = angular.module('gameOfDrones', [
 	  'ngRoute',
-	  'gameOfDrones.view1',
+	  'gameOfDrones.startGame',
 	  'gameOfDrones.playerTurn',
-	  // 'myApp.version',
 	  'playerControllers'
 	]).
 	config(['$routeProvider', function($routeProvider) {
-	  $routeProvider.otherwise({redirectTo: '/view1'});
+	  $routeProvider.otherwise({redirectTo: '/startGame'});
 	}]);
 
 	var playerControllers = angular.module('playerControllers', []);
@@ -23,6 +22,7 @@
 		this.playerTwo = '';
 		// this.players = ['hola']
 		this.addPlayers = function(){
+			this.playerOne = 'goasdas';
 			// this.players.push(this.playerOne);
 			// this.players.push(this.playerTwo);
 			$location.path('/playerTurn');
