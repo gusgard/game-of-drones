@@ -18,7 +18,8 @@ angular.module('gameOfDrones.startGame', ['ngRoute'])
 		// $scope.playerOne = this.playerOne;
 		// this.playerOne = 'holas';
 		// $scope.players.push($scope.playerOne);
-		GameService.setPlayerOne($scope.playerOne);
+		GameService.addPlayer($scope.playerOne);
+		GameService.addPlayer($scope.playerTwo);
 		$location.path('/playerTurn');
 	};
 

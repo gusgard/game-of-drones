@@ -1,12 +1,15 @@
-<div class="jumbotron" ng-controller="playerTurnCtrl">
-    <h2>Round</h2>
+<div class="jumbotron" ng-controller="playerTurnCtrl as playerCtrl">
+    <h2>Round {{numberOfRounds}}</h2>
     <div>
-        <label class="control-label" for="formInput23" >{{playerOne}}  Player name...</label>
+        <label class="control-label" for="formInput23" >{{player}}</label>
     </div>
     <div class="form-group">
         <label class="control-label" for="formInput11">Select move</label>
         <select id="formInput11" class="form-control" ng-model='defaultMove' ng-options="move.name for move in moves">
         </select>
     </div>
-    <p><a class="btn btn-lg btn-success" href="#" role="button">Move</a></p>
+    <p>
+    <input class="btn btn-lg btn-success" value='Move' type="button" ng-click='playerCtrl.addMove()'>
+    <!-- Move</input> -->
+    </p>
 </div>

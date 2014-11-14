@@ -9,14 +9,20 @@ angular.module('gameOfDrones.playerTurn', ['ngRoute'])
   });
 }])
 
-.controller('playerTurnCtrl', function($scope, GameService) {
+.controller('playerTurnCtrl', function($scope, $location, GameService) {
+	$scope.player = GameService.getNextPlayer();
+	$scope.moves = GameService.getMoves();
+	$scope.defaultMove = GameService.getDefaultMove();
+	$scope.numberOfRounds = GameService.getNumberOfRounds();
 
-	// $scope.players =  [];
-	// this.playerOne = '';
-	// $scope.playerTwo = '';
-		// $scope.playerOne = this.playerOne;
-		// this.playerOne = 'holas';
-		// $scope.players.push($scope.playerOne);
-		$scope.playerOne = GameService.getPlayerOne();
+	this.addMove = function(){
+		// GameService.incrementRound();
+		$scope.numberOfRounds++;
+		// $location.path('/playerTurn');
+		console.log('add move');
+		$scope.defaultMove = GameService.getDefaultMove();
+		$scope.player = GameService.getNextPlayer();
 
+		// $scope.
+	};
 });

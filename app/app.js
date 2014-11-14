@@ -13,39 +13,50 @@
 	}]);
 
 	// var playerControllers = angular.module('playerControllers', []);
-
 	app.controller("movesListCtrl", function($scope){  
-		
 		$scope.moves = gameMoves;
 		$scope.defaultMove = $scope.moves[0];
-		// $scope.playerOne = 'a';
-		// $scope.playerTwo = 'b';
-		
-		// $scope.setPlayer = 
-		// $scope.players = [];
-		// this.playerOne = '';
-		// this.playerTwo = '';
 	});
 
 	app.service('GameService', function () {
-        var playerOne = '1';
-        var playerTwo = '2';
+        var numberOfRounds = 1;
+        // var playerOne = 'playerone';
+        // var playerTwo = 'playertwo';
+        var moves = gameMoves;
+        var defaultMove = moves[0];
+        var currentPlayerIndex = 0;
+        var players = [];
 
-        this.setPlayerOne = function (player) {
-            playerOne = player;
-            console.log('seteo playerone!!');
-            console.log(player);
+        this.nextIndex = function(){
+			currentPlayerIndex = (currentPlayerIndex+1) % 2;        	
         };
-        this.getPlayerOne = function(){
-            console.log(playerOne);
-        	return playerOne;
+
+		this.addPlayer = function(name) {
+            var player = {
+            	name: name,
+            	score: 0,
+            };
+            players.push(player);
+            console.log('seteo player ' + name );
         };
+        this.getNextPlayer = function(){
+            this.nextIndex();
+        	return players[currentPlayerIndex].name;
+        };
+
+        this.getMoves = function(){
+        	return moves;
+        };
+
+        this.getDefaultMove = function(){
+        	return defaultMove;
+        };
+
+        this.getNumberOfRounds = function(){
+        	return numberOfRounds;
+        };
+
     });
-
-	// var data = [{
-	// 	name: 'playerName',
-	// 	score: 0,
-	// }];
 
 	var gameMoves = [
 		{
