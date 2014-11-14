@@ -1,5 +1,12 @@
-<p>This is the partial for view 2.</p>
-<p>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' }}
-</p>
+<div class="jumbotron" ng-controller="playerTurnCtrl">
+    <h2>Round</h2>
+    <div>
+        <label class="control-label" for="formInput23" >{{playerOne}}  Player name...</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="formInput11">Select move</label>
+        <select id="formInput11" class="form-control" ng-model='defaultMove' ng-options="move.name for move in moves">
+        </select>
+    </div>
+    <p><a class="btn btn-lg btn-success" href="#" role="button">Move</a></p>
+</div>

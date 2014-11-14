@@ -14,23 +14,51 @@
 
 	// var playerControllers = angular.module('playerControllers', []);
 
-	// playerControllers.controller("ReviewController", function($location){  
+	app.controller("movesListCtrl", function($scope){  
 		
-	// 	// this.players = data;
+		$scope.moves = gameMoves;
+		$scope.defaultMove = $scope.moves[0];
+		// $scope.playerOne = 'a';
+		// $scope.playerTwo = 'b';
+		
+		// $scope.setPlayer = 
+		// $scope.players = [];
+		// this.playerOne = '';
+		// this.playerTwo = '';
+	});
 
-	// 	this.playerOne = '';
-	// 	this.playerTwo = '';
-	// 	// this.players = ['hola']
-	// 	this.addPlayers = function(){
-	// 		this.playerOne = 'goasdas';
-	// 		// this.players.push(this.playerOne);
-	// 		// this.players.push(this.playerTwo);
-	// 		$location.path('/playerTurn');
-	// 	};
-	// });
+	app.service('GameService', function () {
+        var playerOne = '1';
+        var playerTwo = '2';
+
+        this.setPlayerOne = function (player) {
+            playerOne = player;
+            console.log('seteo playerone!!');
+            console.log(player);
+        };
+        this.getPlayerOne = function(){
+            console.log(playerOne);
+        	return playerOne;
+        };
+    });
 
 	// var data = [{
 	// 	name: 'playerName',
 	// 	score: 0,
 	// }];
+
+	var gameMoves = [
+		{
+			name: 'Paper',
+			kill: 'Rock'
+		},
+		{
+			name: 'Rock',
+			kill: 'Scissors'
+		},
+		{
+			name: 'Scissors',
+			kill: 'Paper'
+		}
+	];
 })();
