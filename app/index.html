@@ -18,7 +18,7 @@
     <li><a href="#/view2">view2</a></li>
   </ul> -->
 
-  <!-- <div ng-view></div> -->
+  <div ng-view></div>
 
   <!-- <div>Angular seed app: v<span app-version></span></div> -->
 
@@ -37,7 +37,7 @@
     <div class="jumbotron">
         <h2>Enter Player's Names</h2>
         <form name="playerForm" ng-controller="ReviewController as reviewCtrl"
-                        ng-submit="reviewCtrl.addReview(product)" novalidate>
+                        ng-submit="playerForm.$valid && reviewCtrl.addPlayers()" novalidate>
           <div class="">
               <div class="form-group lead">
                   <label class="control-label" for="formInput3">Player 1</label>
@@ -50,7 +50,12 @@
           </div>
           <div> playerForm is {{playerForm.$valid}} -
           {{reviewCtrl.playerOne}} - {{reviewCtrl.playerTwo}}</div>
-          <p><a class="btn btn-lg btn-success" type="submit" role="button">Start</a></p>
+          <table>
+            <tr ng-repeat="x in reviewCtrl.players"><td>{{x.name}}</td></tr>
+          </table>
+
+
+          <p><a class="btn btn-lg btn-success" type="submit" role="button" ng-click="reviewCtrl.addPlayers()">Start</a></p>
         </form>
     </div>
     <div class="footer">
@@ -63,7 +68,7 @@
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
   <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
+  <script src="playerTurn/playerTurn.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
