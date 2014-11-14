@@ -18,7 +18,6 @@
     <li><a href="#/view2">view2</a></li>
   </ul> -->
 
-  <div ng-view></div>
 
   <!-- <div>Angular seed app: v<span app-version></span></div> -->
 
@@ -34,31 +33,9 @@
         </ul>
         <h1 class="text-muted">Game of drones</h1>
     </div>
-    <div class="jumbotron">
-        <h2>Enter Player's Names</h2>
-        <form name="playerForm" ng-controller="ReviewController as reviewCtrl"
-                        ng-submit="playerForm.$valid && addPlayers()" novalidate>
-          <div class="">
-              <div class="form-group lead">
-                  <label class="control-label" for="formInput3">Player 1</label>
-                  <input type="text" class="form-control" id="formInput3" placeholder="Name" ng-model="reviewCtrl.playerOne" required>
-              </div>
-              <div class="form-group lead">
-                  <label class="control-label" for="formInput23">Player 2</label>
-                  <input type="text" class="form-control" id="formInput23" placeholder="Name" ng-model="reviewCtrl.playerTwo" required>
-              </div>
-          </div>
-          <div> playerForm is {{playerForm.$valid}} -
-          {{reviewCtrl.playerOne}} - {{reviewCtrl.playerTwo}}</div>
-          <table>
-            <tr ng-repeat="x in reviewCtrl.players"><td>{{x.name}}</td></tr>
-          </table>
-
-
-          <p><a class="btn btn-lg btn-success" type="submit" role="button" ng-click="reviewCtrl.addPlayers()">Start</a></p>
-        </form>
-
-    </div>
+  
+    <div ng-view></div>
+    
     <div class="footer">
         <p>© Gustavo Gard 2014</p>
     </div>

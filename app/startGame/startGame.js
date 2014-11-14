@@ -9,6 +9,13 @@ angular.module('gameOfDrones.startGame', ['ngRoute'])
   });
 }])
 
-.controller('startGameCtrl', [function() {
+.controller('startGameCtrl', function($location) {
 
-}]);
+	this.playerOne = '';
+	this.playerTwo = '';
+	this.addPlayers = function(){
+		this.playerOne = 'holas';
+		$location.path('/playerTurn');
+	};
+
+});
