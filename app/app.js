@@ -14,7 +14,7 @@
 	}]);
 
 	app.service('GameService', function () {
-        var maxRounds = 1;
+        var maxRounds = 3;
         var moves = [];
         var playerOne;
         var playerTwo;
@@ -69,6 +69,8 @@
         };
     });
 	app.service('StorageService', function (localStorageService) {
+        //Saves in browser local storage
+        //https://github.com/grevory/angular-local-storage
 		this.setPlayer = function(key, value) {
             if (localStorageService.get(key)!=null) {
 				var player = localStorageService.get(key);
