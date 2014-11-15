@@ -1,15 +1,18 @@
 <div class="jumbotron" ng-controller="playerTurnCtrl as playerCtrl">
     <h2>Round {{numberOfRounds}}</h2>
     <div>
-        <label class="control-label" for="formInput23" >{{player}}</label>
+        <label class="control-label" for="formInput23" >{{currnetPlayer.name}}</label>
     </div>
     <div class="form-group">
         <label class="control-label" for="formInput11">Select move</label>
-        <select id="formInput11" class="form-control" ng-model='defaultMove' ng-options="move.name for move in moves">
+        <select id="formInput11" class="form-control" ng-model='currnetMove' ng-options="move.name for move in moves">
         </select>
     </div>
     <p>
     <input class="btn btn-lg btn-success" value='Move' type="button" ng-click='playerCtrl.addMove()'>
     <!-- Move</input> -->
     </p>
+    <table>
+        <tr ng-repeat="score in scores"><td>{{score.round}} -- {{score.winner.name}}</td></tr>
+    </table>
 </div>
