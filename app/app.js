@@ -6,7 +6,7 @@
 	  'ngRoute',
 	  'gameOfDrones.startGame',
 	  'gameOfDrones.playerTurn',
-	  // 'playerControllers'
+	  'gameOfDrones.finishGame',
 	]).
 	config(['$routeProvider', function($routeProvider) {
 	  $routeProvider.otherwise({redirectTo: '/startGame'});
@@ -25,21 +25,25 @@
         var currentPlayerIndex = 0;
         var playerOne;
         var playerTwo;
+        var currentWinner;
         // this.nextIndex = function(){
 			// currentPlayerIndex = (currentPlayerIndex+1) % 2;        	
         // };
-
+        
 		this.setPlayerOne = function(name) {
             playerOne = {
             	name: name,
             	score: 0,
+            	rounds: 0,
             	// moves : [];
             };
         };
 		this.setPlayerTwo = function(name) {
+			//refactoring de estos 2 metodos!.
             playerTwo = {
             	name: name,
             	score: 0,
+            	rounds: 0,
             	// moves : [];
             };
         };
@@ -61,37 +65,24 @@
         this.getRoundWinner = function(playerOne, playerTwo){
         	if (moves[playerOne.move.kill].name === playerTwo.move.name) {
         		//wins player one
-        		return playerOne;
+        		playerOne.rounds++;
+        		return playerOne.name;
         	}else if(moves[playerTwo.move.kill].name === playerOne.move.name) {
+        		playerTwo.rounds++;
         		//wins player two
-        		return playerTwo;
+        		return playerTwo.name;
         	}else{
         		//draw
-        		return false;
+        		return 'Draw';
         	};
         };
-        this.getGameWinner = function(scores){
-        	var count = {
-        		one: 0,
-        		two: 0,
-        	};
-        	var key;
-        	for (key in scores){
-        		var score = scores[key];
-        		if (score.winner.name === playerOne.name) {
-        			count.one++;
-        		}else{
-        			count.two++;
-        		};
-        	};
-        	if (count.one > count.two) {
-        		playerOne.score ++;
-        		return playerOne.name;
-        	}else{
-				playerTwo.score ++;
-        		return playerTwo.name;
-        	};
+        this.setWinner = function(player){
+        	currentWinner = player;
         };
+        this.getWinner = function(){
+        	return currentWinner;
+        };
+
     });
 
 	var gameMoves = [
