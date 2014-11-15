@@ -12,7 +12,7 @@
 
 	.controller('finishGameController', function($location, GameService, StorageService) {
 		this.playerWinner = GameService.getWinner();
-		this.changePath = function(){
+		this.restartGame = function(){
 			$location.path('/startGame');
 			StorageService.setPlayer(this.playerWinner.name, this.playerWinner);
 			var player = StorageService.getItem(this.playerWinner.name);

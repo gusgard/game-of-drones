@@ -1,15 +1,15 @@
-<div class="row" ng-controller="playerTurnCtrl as playerCtrl">
+<div class="row" ng-controller="playerTurnController as playerTurnCtrl">
     <div class="col-md-4" ></div>
     <div class="col-md-4 jumbotron ">
         <h2 class="text-center">Round {{numberOfRounds}}</h2>
         <h2>Player {{isPlayerOneTurn ? '1' : '2'}} {{currnetPlayer.name}}</h2>
         <div class="form-group">
             <label class="control-label">Select move</label>
-            <select id="formInput11" class="form-control" ng-model='currnetMove' ng-options="move.name for move in moves">
+            <select class="form-control" ng-model='currnetMove' ng-options="move.name for move in moves">
             </select>
         </div>
         <p>
-        <input class="btn btn-lg btn-success btn-full-width" value='Move' type="button" ng-click='playerCtrl.addMove()'>
+        <input class="btn btn-lg btn-success btn-full-width" value='Move' type="button" ng-click='playerTurnCtrl.addMove()'>
         </p>
     </div>
     <div class="col-md-3 jumbotron pull-right text-center">

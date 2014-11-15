@@ -16,7 +16,6 @@
 	app.service('GameService', function () {
         var maxRounds = 1;
         var moves = [];
-        var currentPlayerIndex = 0;
         var playerOne;
         var playerTwo;
         var currentWinner;

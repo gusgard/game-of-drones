@@ -1,9 +1,9 @@
-<div class="row" ng-controller="startGameCtrl">
+<div class="row" ng-controller="startGameController as startGameCtrl">
   <div class="col-md-4" ></div>
   <div class="col-md-4 jumbotron">
     <h2>Enter player's names</h2>
     <form name="playerForm" 
-                    ng-submit="playerForm.$valid && changePath()" novalidate>
+                    ng-submit="playerForm.$valid && startGameCtrl.loadConfig()" novalidate>
       <div class="">
           <div class="form-group lead">
               <label class="control-label">Player 1</label>

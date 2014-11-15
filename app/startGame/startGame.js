@@ -6,12 +6,12 @@
 	.config(['$routeProvider', function($routeProvider) {
 	  $routeProvider.when('/startGame', {
 	    templateUrl: 'startGame/startGame.html',
-	    controller: 'startGameCtrl'
+	    controller: 'startGameController'
 	  });
 	}])
 
-	.controller('startGameCtrl', function(StorageService, $scope, $location, $http , GameService) {
-		$scope.changePath = function(){
+	.controller('startGameController', function(StorageService, $scope, $location, $http , GameService) {
+		this.loadConfig = function(){
 			GameService.setPlayerOne($scope.playerOne);
 			GameService.setPlayerTwo($scope.playerTwo);
 			$http.get('./moves.json').
