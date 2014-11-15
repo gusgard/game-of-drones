@@ -1,12 +1,10 @@
 <div class="row" ng-controller="playerTurnCtrl as playerCtrl">
     <div class="col-md-4" ></div>
     <div class="col-md-4 jumbotron ">
-        <h2>Round {{numberOfRounds}}</h2>
-        <div>
-            <label class="control-label" for="formInput23" >{{currnetPlayer.name}}</label>
-        </div>
+        <h2 class="text-center">Round {{numberOfRounds}}</h2>
+        <h2>Player {{isPlayerOneTurn ? '1' : '2'}} {{currnetPlayer.name}}</h2>
         <div class="form-group">
-            <label class="control-label" for="formInput11">Select move</label>
+            <label class="control-label">Select move</label>
             <select id="formInput11" class="form-control" ng-model='currnetMove' ng-options="move.name for move in moves">
             </select>
         </div>

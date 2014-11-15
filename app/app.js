@@ -14,8 +14,7 @@
 	}]);
 
 	app.service('GameService', function () {
-        var rounds = 1;
-        var maxRounds = 3;
+        var maxRounds = 1;
         var moves = [];
         var currentPlayerIndex = 0;
         var playerOne;
@@ -45,9 +44,6 @@
         };
         this.getMoves = function(){
         	return moves;
-        };
-        this.getNumberOfRounds = function(){
-        	return rounds;
         };
         this.getMaxRounds = function(){
         	return maxRounds;
@@ -88,5 +84,4 @@
 			return localStorageService.get(key);
 		}
     });
-
 })();
