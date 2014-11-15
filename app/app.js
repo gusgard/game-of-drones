@@ -70,7 +70,7 @@
     });
 	app.service('StorageService', function (localStorageService) {
 		this.setPlayer = function(key, value) {
-			if (localStorageService.get(key)!=null) {
+            if (localStorageService.get(key)!=null) {
 				var player = localStorageService.get(key);
 				player.score++;
 				localStorageService.set(key, player);

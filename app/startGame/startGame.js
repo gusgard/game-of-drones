@@ -10,7 +10,8 @@
 	  });
 	}])
 
-	.controller('startGameController', function(StorageService, $scope, $location, $http , GameService) {
+	.controller('startGameController', function($scope, $location, $http , GameService) {
+		
 		this.loadConfig = function(){
 			GameService.setPlayerOne($scope.playerOne);
 			GameService.setPlayerTwo($scope.playerTwo);
