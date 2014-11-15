@@ -1,0 +1,14 @@
+[
+	{
+		"name": "Paper",
+		"kill": 1
+	},
+	{
+		"name": "Rock",
+		"kill": 2
+	},
+	{
+		"name": "Scissors",
+		"kill": 0
+	}
+]

@@ -13,7 +13,6 @@ angular.module('gameOfDrones.playerTurn', ['ngRoute'])
 	$scope.moves = GameService.getMoves();
 	$scope.currnetMove = $scope.moves[0];
 	$scope.numberOfRounds = GameService.getNumberOfRounds();
-	// $scope.maxRounds = GameService.getMaxRounds();
 	
 	$scope.playerOne = GameService.getPlayerOne();
 	$scope.playerTwo = GameService.getPlayerTwo();
@@ -26,7 +25,6 @@ angular.module('gameOfDrones.playerTurn', ['ngRoute'])
 			$scope.isPlayerOneTurn = false;
 			$scope.currnetPlayer = $scope.playerTwo;
 			$scope.playerOne.move = $scope.currnetMove;
-			// console.log($scope.playerOne.name + ' ' + $scope.playerOne.move);
 		}else{
 			$scope.isPlayerOneTurn = true;
 			$scope.currnetPlayer = $scope.playerOne;
@@ -42,8 +40,6 @@ angular.module('gameOfDrones.playerTurn', ['ngRoute'])
 			$scope.scores.push(score);
 			$scope.numberOfRounds++;
 		};
-		console.log($scope.playerOne.rounds);
-		console.log($scope.playerTwo.rounds);
 
 		if ($scope.playerOne.rounds == GameService.getMaxRounds()) {
 			GameService.setWinner($scope.playerOne);

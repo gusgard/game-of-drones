@@ -7,44 +7,34 @@
 	  'gameOfDrones.startGame',
 	  'gameOfDrones.playerTurn',
 	  'gameOfDrones.finishGame',
+	  'LocalStorageModule',
 	]).
 	config(['$routeProvider', function($routeProvider) {
 	  $routeProvider.otherwise({redirectTo: '/startGame'});
 	}]);
 
-	// var playerControllers = angular.module('playerControllers', []);
-	app.controller("movesListCtrl", function($scope){  
-		$scope.moves = gameMoves;
-		$scope.defaultMove = $scope.moves[0];
-	});
-
 	app.service('GameService', function () {
         var rounds = 1;
         var maxRounds = 3;
-        var moves = gameMoves;
+        var moves = [];
         var currentPlayerIndex = 0;
         var playerOne;
         var playerTwo;
         var currentWinner;
-        // this.nextIndex = function(){
-			// currentPlayerIndex = (currentPlayerIndex+1) % 2;        	
-        // };
-        
+
+		this.setMoves = function(newMoves){
+			moves = newMoves;
+		};
 		this.setPlayerOne = function(name) {
             playerOne = {
             	name: name,
-            	score: 0,
             	rounds: 0,
-            	// moves : [];
             };
         };
 		this.setPlayerTwo = function(name) {
-			//refactoring de estos 2 metodos!.
             playerTwo = {
             	name: name,
-            	score: 0,
             	rounds: 0,
-            	// moves : [];
             };
         };
 		this.getPlayerOne = function(){
@@ -82,21 +72,21 @@
         this.getWinner = function(){
         	return currentWinner;
         };
-
+    });
+	app.service('StorageService', function (localStorageService) {
+		this.setPlayer = function(key, value) {
+			if (localStorageService.get(key)!=null) {
+				var player = localStorageService.get(key);
+				player.score++;
+				localStorageService.set(key, player);
+			}else{
+				value.score = 1;
+				localStorageService.set(key, value);
+			}
+		}
+		this.getItem = function(key) {
+			return localStorageService.get(key);
+		}
     });
 
-	var gameMoves = [
-		{
-			name: 'Paper',
-			kill: 1,		//kills the position of the array.
-		},
-		{
-			name: 'Rock',
-			kill: 2,
-		},
-		{
-			name: 'Scissors',
-			kill: 0,
-		}
-	];
 })();

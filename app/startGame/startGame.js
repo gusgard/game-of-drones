@@ -9,12 +9,19 @@ angular.module('gameOfDrones.startGame', ['ngRoute'])
   });
 }])
 
-.controller('startGameCtrl', function($scope, $location, GameService) {
+.controller('startGameCtrl', function(StorageService, $scope, $location, $http , GameService) {
 
-	this.changePath = function(){
+	$scope.changePath = function(){
 		GameService.setPlayerOne($scope.playerOne);
 		GameService.setPlayerTwo($scope.playerTwo);
-		$location.path('/playerTurn');
+		$http.get('./moves.json').
+			success(function(moves){
+		    	GameService.setMoves(moves);
+				$location.path('/playerTurn');
+			}).
+			error(function(data, status) {
+    	    	console.log('Error code '+ status+ ' ' + data);
+	     	});
 	};
 
 });

@@ -9,10 +9,12 @@ angular.module('gameOfDrones.finishGame', ['ngRoute'])
   });
 }])
 
-.controller('finishGameController', function($location, GameService) {
+.controller('finishGameController', function($location, GameService, StorageService) {
 	this.playerWinner = GameService.getWinner();
 	this.changePath = function(){
 		$location.path('/startGame');
+		StorageService.setPlayer(this.playerWinner.name, this.playerWinner);
+		StorageService.getItem('ganador '+ this.playerWinner.name);
 	};
 
 });
