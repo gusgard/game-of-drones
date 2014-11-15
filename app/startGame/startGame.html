@@ -1,7 +1,7 @@
 <div class="row" >
   <div class="col-md-4" ></div>
   <div class="col-md-4 jumbotron">
-    <h2>Enter Player's Names</h2>
+    <h2>Enter player's names</h2>
     <form name="playerForm" ng-controller="startGameCtrl"
                     ng-submit="playerForm.$valid" novalidate>
       <div class="">
@@ -20,7 +20,7 @@
         <tr ng-repeat="x in moves"><td>{{x.name}}</td></tr>
       </table>
 
-      <p><a class="btn btn-lg btn-success" type="submit" role="button"
+      <p><a class="btn btn-lg btn-success btn-full-width" type="submit" role="button"
        ng-controller="startGameCtrl as sCtrl" ng-click="sCtrl.changePath()">Start</a></p>
     </form>
   </div>
