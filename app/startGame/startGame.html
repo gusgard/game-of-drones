@@ -1,20 +1,19 @@
-<div class="row" ng-controller="startGameController as startGameCtrl">
+<div class="row" ng-controller="startGameController">
   <div class="col-md-4" ></div>
   <div class="col-md-4 jumbotron">
     <h2>Enter player's names</h2>
-    <form name="playerForm" 
-                    ng-submit="playerForm.$valid && startGameCtrl.loadConfig()" novalidate>
+    <form name="playerForm" ng-submit="playerForm.$valid && startGameCtrl.loadConfig()" novalidate>
       <div class="">
           <div class="form-group lead">
               <label class="control-label">Player 1</label>
-              <input type="text" class="form-control" placeholder="Name" ng-model="playerOne" required>
+              <input type="text" class="form-control" placeholder="Name" ng-model="startGameCtrl.playerOne" required>
           </div>
           <div class="form-group lead">
               <label class="control-label" >Player 2</label>
-              <input type="text" class="form-control" placeholder="Name" ng-model="playerTwo" required>
+              <input type="text" class="form-control" placeholder="Name" ng-model="startGameCtrl.playerTwo" required>
           </div>
       </div>
-      <button class="btn btn-lg btn-success btn-full-width" type="submit" ng-disabled="playerForm.$invalid" >Start</button>
+      <button class="btn btn-lg btn-success btn-full-width" type="submit" ng-disabled="playerForm.$invalid">Start</button>
     </form>
   </div>
 </div>

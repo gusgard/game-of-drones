@@ -6,48 +6,51 @@
 	.config(['$routeProvider', function($routeProvider) {
 	  $routeProvider.when('/playerTurn', {
 	    templateUrl: 'playerTurn/playerTurn.html',
-	    controller: 'playerTurnController'
+	    controller: 'playerTurnController',
+			controllerAs: 'playerTurnCtrl'
 	  });
 	}])
 
-	.controller('playerTurnController', function($scope, $location, GameService) {
-		$scope.moves = GameService.getMoves();
-		$scope.currnetMove = $scope.moves[0];
-		$scope.numberOfRounds = 1;
-		$scope.scores = [];
-		$scope.playerOne = GameService.getPlayerOne();
-		$scope.playerTwo = GameService.getPlayerTwo();
-		$scope.currnetPlayer = $scope.playerOne;
-		$scope.isPlayerOneTurn = true;
+	.controller('playerTurnController', function($location, GameService) {
+		var self = this;
 
-		this.addMove = function(){
-			if ($scope.isPlayerOneTurn) {
-				$scope.isPlayerOneTurn = false;
-				$scope.currnetPlayer = $scope.playerTwo;
-				$scope.playerOne.move = $scope.currnetMove;
+		self.moves = GameService.getMoves();
+		self.currnetMove = self.moves[0];
+		self.numberOfRounds = 1;
+		self.scores = [];
+		self.playerOne = GameService.getPlayerOne();
+		self.playerTwo = GameService.getPlayerTwo();
+		self.currnetPlayer = self.playerOne;
+		self.isPlayerOneTurn = true;
+
+		self.addMove = function(){
+			if (self.isPlayerOneTurn) {
+				self.isPlayerOneTurn = false;
+				self.currnetPlayer = self.playerTwo;
+				self.playerOne.move = self.currnetMove;
 			}else{
-				$scope.isPlayerOneTurn = true;
-				$scope.currnetPlayer = $scope.playerOne;
-				
-				$scope.playerTwo.move = $scope.currnetMove;
+				self.isPlayerOneTurn = true;
+				self.currnetPlayer = self.playerOne;
 
-				var winnerName = GameService.getRoundWinner($scope.playerOne, $scope.playerTwo); 
+				self.playerTwo.move = self.currnetMove;
+
+				var winnerName = GameService.getRoundWinner(self.playerOne, self.playerTwo);
 				var score = {
-					round: $scope.numberOfRounds,
-					winner: winnerName,
+					round: self.numberOfRounds,
+					winner: winnerName
 				};
-				$scope.scores.push(score);
-				$scope.numberOfRounds++;
-			};
+				self.scores.push(score);
+				self.numberOfRounds++;
+			}
 
-			if ($scope.playerOne.rounds == GameService.getMaxRounds()) {
-				GameService.setWinner($scope.playerOne);
+			if (self.playerOne.rounds == GameService.getMaxRounds()) {
+				GameService.setWinner(self.playerOne);
 				$location.path('/finishGame');
-			}else if ($scope.playerTwo.rounds == GameService.getMaxRounds()) {
-				GameService.setWinner($scope.playerTwo);
+			}else if (self.playerTwo.rounds == GameService.getMaxRounds()) {
+				GameService.setWinner(self.playerTwo);
 				$location.path('/finishGame');
-			};
-			$scope.currnetMove = $scope.moves[0];
+			}
+			self.currnetMove = self.moves[0];
 		};
 	});
 })();

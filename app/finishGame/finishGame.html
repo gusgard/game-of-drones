@@ -1,6 +1,6 @@
 <div class="row" >
   <div class="col-md-2" ></div>
-  <div class="col-md-8 jumbotron text-center" ng-controller="finishGameController as finishGameCtrl">
+  <div class="col-md-8 jumbotron text-center" ng-controller="finishGameController">
     <h1>We have a winner!!!</h1>
     <h2>{{finishGameCtrl.playerWinner.name}} is the new champion!</h2>
      <input class="btn btn-lg btn-success btn-full-width" value='Play again' type="button" ng-click='finishGameCtrl.restartGame()'>

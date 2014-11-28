@@ -1,11 +1,11 @@
-<div class="row" ng-controller="playerTurnController as playerTurnCtrl">
+<div class="row" ng-controller="playerTurnController">
     <div class="col-md-4" ></div>
     <div class="col-md-4 jumbotron ">
-        <h2 class="text-center">Round {{numberOfRounds}}</h2>
-        <h2>Player {{isPlayerOneTurn ? '1' : '2'}} {{currnetPlayer.name}}</h2>
+        <h2 class="text-center">Round {{playerTurnCtrl.numberOfRounds}}</h2>
+        <h2>Player {{playerTurnCtrl.isPlayerOneTurn ? '1' : '2'}} {{playerTurnCtrl.currnetPlayer.name}}</h2>
         <div class="form-group">
             <label class="control-label">Select move</label>
-            <select class="form-control" ng-model='currnetMove' ng-options="move.name for move in moves">
+            <select class="form-control" ng-model='playerTurnCtrl.currnetMove' ng-options="move.name for move in playerTurnCtrl.moves">
             </select>
         </div>
         <p>
@@ -22,12 +22,12 @@
                 <h3>Winner</h3>
             </div>
         </div>
-        <div class="row" ng-repeat="score in scores">
+        <div class="row" ng-repeat="score in playerTurnCtrl.scores">
             <div class="col-md-6" >
-                <label >{{score.round}}</label>
+                <label ng-bind="score.round"></label>
             </div>
             <div class="col-md-6">
-                <label>{{score.winner}}</label>
+              <label ng-bind='score.winner'></label>
             </div>
         </div>
     </div>
