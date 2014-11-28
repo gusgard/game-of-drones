@@ -11,24 +11,13 @@
 	  });
 	}])
 
-	.controller('startGameController', function($location, $http, GameService) {
+	.controller('startGameController', function($location, GameService) {
 		var self = this;
 		self.loadConfig = function(){
 			GameService.setPlayerOne(self.playerOne);
 			GameService.setPlayerTwo(self.playerTwo);
-			$http.get('./moves.json').
-				success(function(moves){
-					GameService.setMoves(moves);
-					$location.path('/playerTurn');
-				}).
-				error(function(data, status) {
-					console.log('Error code '+ status+ ' ' + data);
-				});
-
-			//if (GameService.loadMoves()) {
-			//	console.log('asd');
-			//	$location.path('/playerTurn');
-			//}
+			GameService.loadMoves();
+			$location.path('/playerTurn');
 		};
 	});
 })();

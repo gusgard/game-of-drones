@@ -13,16 +13,13 @@
 	  $routeProvider.otherwise({redirectTo: '/startGame'});
 	}]);
 
-	app.service('GameService', function ($http) {
+	app.service('GameService', function () {
 		var maxRounds = 3;
 		var moves = [];
 		var playerOne;
 		var playerTwo;
 		var currentWinner;
 
-		this.setMoves = function(newMoves){
-			moves = newMoves;
-		};
 		this.setPlayerOne = function (name) {
 			playerOne = {
 				name: name,
@@ -69,13 +66,9 @@
 		};
 		this.loadMoves = function () {
 			$http.get('./moves.json').success(function (newMoves) {
-				console.log('hola');
 				moves = newMoves;
-				return true;
 			}).error(function (data, status) {
 				console.log('Error code ' + status + ' ' + data);
-				console.log('asd');
-				return false;
 			});
 		}
 	});
