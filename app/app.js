@@ -13,7 +13,7 @@
 	  $routeProvider.otherwise({redirectTo: '/startGame'});
 	}]);
 
-	app.service('GameService', function () {
+	app.service('GameService',['$http', function ($http) {
 		var maxRounds = 3;
 		var moves = [];
 		var playerOne;
@@ -71,7 +71,7 @@
 				console.log('Error code ' + status + ' ' + data);
 			});
 		}
-	});
+	}]);
 	app.service('StorageService', function (localStorageService) {
         //Saves in browser local storage
         //https://github.com/grevory/angular-local-storage
